@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import contactsActions from "../../redux/contacts/contactsActions";
-import { v4 as uuidv4 } from "uuid";
-import PropTypes from "prop-types";
 import styles from "./contactForm.module.css";
 
 class ContactForm extends Component {
@@ -19,23 +17,11 @@ class ContactForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    // this.dublicate() && this.props.onAlert();
-
-    // this.props.onAddContact({ ...this.state });
-    // // const { name, number } = this.state;
-    // // this.props.onSubmit({ id: uuidv4(), name, number });
-    // this.reset();
-
-    // this.dublicate() &&
-    //   setTimeout(() => {
-    //     this.props.onAlert();
-    //   }, 1000);
-
     if (this.dublicate()) {
       this.props.onAlert();
       setTimeout(() => {
         this.props.onAlert();
-      }, 4000);
+      }, 1000);
     } else {
       this.props.onAddContact({ ...this.state });
       this.reset();
@@ -102,11 +88,6 @@ const mapDispatchToProps = {
 //       dispatch(contactsActions.addToContacts(contact));
 //     },
 //   };
-// };
-
-// ContactForm.propTypes = {
-//   name: PropTypes.string,
-//   number: PropTypes.string,
 // };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

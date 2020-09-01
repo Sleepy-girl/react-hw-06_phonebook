@@ -24,8 +24,6 @@ function ContactListItem({ name, number, id, onRemoveContact }) {
 }
 
 const mapStateToProps = (state, { id }) => {
-  // console.log("id from mapStateToProps", id);
-  // console.log("state from mapStateToProps", state);
   return {
     contact: state.contacts.items.find((item) => item.id === id),
   };

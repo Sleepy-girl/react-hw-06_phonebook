@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import contactsActions from "../../redux/contacts/contactsActions";
 
 function Filter({ getFilterValue, filter }) {
-  // console.log("filter-value", filter);
   return (
     <div className={styles.wrapperFilter}>
       <label className={stylesFromForm.label}>
@@ -25,7 +24,6 @@ function Filter({ getFilterValue, filter }) {
 }
 
 const mapStateToProps = (state) => {
-  // console.log("state-filter-mapStateToProps", state);
   return { state: state.contacts.filter };
 };
 const mapDispatchToProps = {

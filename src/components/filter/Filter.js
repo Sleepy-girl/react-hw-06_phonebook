@@ -24,7 +24,7 @@ function Filter({ getFilterValue, filter }) {
 }
 
 const mapStateToProps = (state) => {
-  return { state: state.contacts.filter };
+  return { filter: state.contacts.filter };
 };
 const mapDispatchToProps = {
   getFilterValue: contactsActions.getFilterValue,

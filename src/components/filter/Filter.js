@@ -1,8 +1,11 @@
 import React from "react";
 import styles from "./filter.module.css";
 import stylesFromForm from "../contactForm/contactForm.module.css";
+import { connect } from "react-redux";
+import contactsActions from "../../redux/contacts/contactsActions";
 
-function Filter({ getFilterValue, value }) {
+function Filter({ getFilterValue, filter }) {
+  // console.log("filter-value", filter);
   return (
     <div className={styles.wrapperFilter}>
       <label className={stylesFromForm.label}>
@@ -10,8 +13,10 @@ function Filter({ getFilterValue, value }) {
         <input
           type="text"
           name="filter"
-          onChange={getFilterValue}
-          value={value}
+          onChange={(e) => {
+            getFilterValue(e.target.value);
+          }}
+          value={filter}
           className={stylesFromForm.input}
         />
       </label>
@@ -19,4 +24,12 @@ function Filter({ getFilterValue, value }) {
   );
 }
 
-export default Filter;
+const mapStateToProps = (state) => {
+  // console.log("state-filter-mapStateToProps", state);
+  return { state: state.contacts.filter };
+};
+const mapDispatchToProps = {
+  getFilterValue: contactsActions.getFilterValue,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
